@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medidor Trifasico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Medidor Trifasico</h1>
+        <div id="status">
+            <span id="ws-status" class="disconnected">Desconectado</span>
+            <span id="timestamp"></span>
+            <a href="/update" class="update-link" title="Atualizar firmware">&#9881;</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="total-bar">
+            <span class="label">Potencia Total</span>
+            <span id="total-power" class="value">-- W</span>
+        </section>
+
+        <section id="phases">
+            <div class="phase-card" id="card-L1">
+                <h2>L1</h2>
+                <div class="readings">
+                    <div class="reading"><span class="label">Tensao</span><span class="value" id="L1-v">--</span><span class="unit">V</span></div>
+                    <div class="reading"><span class="label">Corrente</span><span class="value" id="L1-i">--</span><span class="unit">A</span></div>
+                    <div class="reading"><span class="label">Potencia</span><span class="value" id="L1-p">--</span><span class="unit">W</span></div>
+                    <div class="reading"><span class="label">Energia</span><span class="value" id="L1-e">--</span><span class="unit">kWh</span></div>
+                    <div class="reading"><span class="label">Frequencia</span><span class="value" id="L1-f">--</span><span class="unit">Hz</span></div>
+                    <div class="reading"><span class="label">Fator Pot.</span><span class="value" id="L1-pf">--</span><span class="unit"></span></div>
+                </div>
+            </div>
+
+            <div class="phase-card" id="card-L2">
+                <h2>L2</h2>
+                <div class="readings">
+                    <div class="reading"><span class="label">Tensao</span><span class="value" id="L2-v">--</span><span class="unit">V</span></div>
+                    <div class="reading"><span class="label">Corrente</span><span class="value" id="L2-i">--</span><span class="unit">A</span></div>
+                    <div class="reading"><span class="label">Potencia</span><span class="value" id="L2-p">--</span><span class="unit">W</span></div>
+                    <div class="reading"><span class="label">Energia</span><span class="value" id="L2-e">--</span><span class="unit">kWh</span></div>
+                    <div class="reading"><span class="label">Frequencia</span><span class="value" id="L2-f">--</span><span class="unit">Hz</span></div>
+                    <div class="reading"><span class="label">Fator Pot.</span><span class="value" id="L2-pf">--</span><span class="unit"></span></div>
+                </div>
+            </div>
+
+            <div class="phase-card" id="card-L3">
+                <h2>L3</h2>
+                <div class="readings">
+                    <div class="reading"><span class="label">Tensao</span><span class="value" id="L3-v">--</span><span class="unit">V</span></div>
+                    <div class="reading"><span class="label">Corrente</span><span class="value" id="L3-i">--</span><span class="unit">A</span></div>
+                    <div class="reading"><span class="label">Potencia</span><span class="value" id="L3-p">--</span><span class="unit">W</span></div>
+                    <div class="reading"><span class="label">Energia</span><span class="value" id="L3-e">--</span><span class="unit">kWh</span></div>
+                    <div class="reading"><span class="label">Frequencia</span><span class="value" id="L3-f">--</span><span class="unit">Hz</span></div>
+                    <div class="reading"><span class="label">Fator Pot.</span><span class="value" id="L3-pf">--</span><span class="unit"></span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chart-section">
+            <h2>Historico (5 min)</h2>
+            <canvas id="powerChart" height="200"></canvas>
+        </section>
+
+        <section id="alarm-bar" class="hidden">
+            <span id="alarm-icon">&#9888;</span>
+            <span id="alarm-msg"></span>
+        </section>
+    </main>
+
+    <script src="chart.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

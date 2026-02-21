@@ -1,0 +1,19 @@
+.pio/
+.vscode/
+.cache/
+__pycache__/
+
+# Compiled files
+*.o
+*.elf
+*.bin
+*.map
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+*.swp
+*.swo
+*~
