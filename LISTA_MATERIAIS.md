@@ -4,12 +4,12 @@
 
 | # | Componente | Qtd | Especificacao | Preco PIX (R$) | Onde comprar |
 |---|---|---|---|---|---|
-| 1 | **ESP32 DevKit V1** | 1 | 30 pinos, CP2102, USB-C, 4MB flash | R$ 59,80 | [Usinainfo #10357](https://www.usinainfo.com.br/index.php?route=product/product&product_id=10357) |
+| 1 | **ESP32 DevKit V1** | 1 | 30 pinos, CP2102, USB-C, 4MB flash | R$ 66,36 | [Usinainfo](https://www.usinainfo.com.br/nodemcu/esp32-nodemcu-iot-com-wifi-e-bluetooth-30-pinos-com-cp2102-5147.html) |
 | 2 | **PZEM-004T v3.0** com TC **split-core** 100A | 3 | Modbus RTU, medidor AC, **CT aberto obrigatorio** | R$ 55-80/un | [Mercado Livre](https://lista.mercadolivre.com.br/pzem-004) ou [AliExpress](https://www.aliexpress.com/item/32907139707.html) |
-| 3 | **Display OLED SSD1306** | 1 | 0.96", 128x64, I2C (4 pinos), branco | R$ 26,80 | [Usinainfo #08483](https://www.usinainfo.com.br/index.php?route=product/product&product_id=8483) |
-| 4 | **Modulo SD Card** | 1 | SPI, slot micro SD, 3.3V/5V | R$ 6,30 | [Usinainfo #08137](https://www.usinainfo.com.br/index.php?route=product/product&product_id=8137) |
+| 3 | **Display OLED SSD1306** | 1 | 0.96", 128x64, I2C (4 pinos), branco | R$ 25,46 | [Usinainfo](https://www.usinainfo.com.br/display-arduino/display-oled-096-i2c-128x64-branco-para-arduino-5366.html) |
+| 4 | **Modulo SD Card** | 1 | SPI, slot micro SD, 3.3V/5V | R$ 7,89 | [Usinainfo](https://www.usinainfo.com.br/outros-modulos-arduino/sd-card-para-arduino-leitor-micro-sd-card-2637.html) |
 | 5 | **Cartao micro SD** | 1 | 4GB+ classe 10 (SanDisk/Kingston) | R$ 20-30 | Qualquer papelaria ou [Mercado Livre](https://lista.mercadolivre.com.br/cartao-micro-sd-16gb-classe-10) |
-| 6 | **Buzzer passivo** | 1 | 5V, tipo piezo, acionamento GND Low | R$ 7,30 | [Usinainfo #07768](https://www.usinainfo.com.br/index.php?route=product/product&product_id=7768) |
+| 6 | **Buzzer passivo BP18** | 1 | 5V, acionamento GND Low | R$ 6,94 | [Usinainfo](https://www.usinainfo.com.br/buzzer-arduino/buzzer-passivo-modulo-transdutor-bp18-acionamento-gnd-low-4708.html) |
 
 > **IMPORTANTE sobre PZEM-004T:** Exigir CT **split-core (aberto)** que abre como grampo para abracar o cabo sem desconectar. NAO comprar com CT fechado (closed loop). Na Usinainfo tem o V4.0 a R$78,38 mas vem com CT fechado. Preferir Mercado Livre ou AliExpress com split-core.
 
@@ -30,7 +30,7 @@
 | 11 | **Barra de pinos macho 1x40** | 1 | 2.54mm, 180 graus (cortar no tamanho) | R$ 1,89 | [Usinainfo #06017](https://www.usinainfo.com.br/barras-de-pinos/barra-de-pinos-macho-1x40-vias-com-passo-de-254mm-180-preto-2748.html) |
 | 12 | **Jumper M-M 20cm** kit 20pcs | 1 | Dupont Premium, 24 AWG, 10 cores | R$ 5,89 | [Usinainfo #05861](https://www.usinainfo.com.br/jumper/jumper-premium-para-protoboard-macho-macho-20cm-kit-c-20-pecas-2611.html) |
 | 12b | **Jumper M-F 20cm** kit 20pcs | 1 | Dupont Premium, 24 AWG, 10 cores | R$ 5,51 | [Usinainfo #05632](https://www.usinainfo.com.br/jumper/jumper-premium-para-protoboard-macho-femea-20cm-kit-c-20-pecas-2314.html) |
-| 13 | **Borne KRE 2 vias** | 1-6 | 12mm, passo 5.08mm, max 10A | R$ 1,88/un | [Usinainfo #06354](https://www.usinainfo.com.br/index.php?route=product/product&product_id=3077) |
+| 13 | **Borne KRE 2 vias** | 1-6 | 12mm, passo 5.08mm, max 10A | R$ 1,88/un | [Usinainfo](https://www.usinainfo.com.br/borne-kre-e-xt60/conector-borne-kre-12mm-2-vias-azul-3077.html) |
 
 ## Componentes Passivos
 
@@ -46,10 +46,10 @@
 
 | # | Componente | Qtd | Especificacao | Preco PIX (R$) | Onde comprar |
 |---|---|---|---|---|---|
-| 19 | **Caixa Patola PB-114** | 1 | 55x97x148mm, com tampa | R$ 31,92 | [Usinainfo](https://www.usinainfo.com.br/index.php?route=product/product&product_id=3880) |
-| 19b | **Caixa Patola PB-112** (alternativa menor) | 1 | 53x85x124mm, com tampa | R$ 24,70 | [Usinainfo](https://www.usinainfo.com.br/index.php?route=product/product&product_id=3879) |
-| 19c | **Case SZOMK Trilho DIN** (alternativa quadro) | 1 | 145x90x40mm, com bornes, trilho DIN | R$ 66,68 | [Usinainfo](https://www.usinainfo.com.br/index.php?route=product/product&product_id=5027) |
-| 20 | **Prensa-cabo PG7** | 3-4 | IP67, nylon, para cabo 3.5-6.5mm | R$ 2,76/un | [Usinainfo #08129](https://www.usinainfo.com.br/index.php?route=product/product&product_id=5043) |
+| 19 | **Caixa Patola PB-114** | 1 | 55x97x148mm, com tampa | R$ 31,92 | [Usinainfo](https://www.usinainfo.com.br/caixas-patola/caixa-patola-case-para-montagem-55-x-97-x-148-mm-pb-114-3880.html) |
+| 19b | **Caixa Patola PB-112** (alternativa menor) | 1 | 53x85x124mm, com tampa | R$ 24,70 | [Usinainfo](https://www.usinainfo.com.br/caixas-patola/caixa-patola-case-para-montagem-53-x-85-x-124-mm-pb-112-3879.html) |
+| 19c | **Case SZOMK Trilho DIN** (alternativa quadro) | 1 | 145x90x40mm, com bornes, trilho DIN | R$ 66,68 | [Usinainfo](https://www.usinainfo.com.br/caixas-patola/case-szomk-para-montagem-145x90x40mm-gabinete-para-trilho-din-bornes-5027.html) |
+| 20 | **Prensa-cabo PG7** | 3-4 | IP67, nylon, para cabo 3.5-6.5mm | R$ 2,76/un | [Usinainfo](https://www.usinainfo.com.br/conectores-e-adaptadores/prensa-cabo-pg7-ip67-14-para-condutor-de-35-a-65mm-5043.html) |
 
 ## Ferramentas Necessarias (se nao tiver)
 
@@ -66,10 +66,10 @@
 
 | # | Item | Preco PIX |
 |---|---|---|
-| 1 | ESP32 DevKit V1 | R$ 59,80 |
-| 2 | Display OLED SSD1306 | R$ 26,80 |
-| 3 | Modulo SD Card | R$ 6,30 |
-| 4 | Buzzer Passivo | R$ 7,30 |
+| 1 | ESP32 DevKit V1 | R$ 66,36 |
+| 2 | Display OLED SSD1306 | R$ 25,46 |
+| 3 | Modulo SD Card | R$ 7,89 |
+| 4 | Buzzer Passivo BP18 | R$ 6,94 |
 | 5 | Placa perfurada 8x12cm dupla face | R$ 8,31 |
 | 6 | 2x Barra pinos femea 20p | R$ 4,54 |
 | 7 | Barra pinos macho 1x40 | R$ 1,89 |
@@ -82,20 +82,20 @@
 | 14 | LED verde 3mm kit 10un | R$ 3,40 |
 | 15 | Caixa Patola PB-114 | R$ 31,92 |
 | 16 | 4x Prensa-cabo PG7 | R$ 11,04 |
-| | **Subtotal Usinainfo** | **R$ 183,41** |
+| | **Subtotal Usinainfo** | **R$ 189,86** |
 | 17 | 3x PZEM-004T split-core (ML) | ~R$ 165-240 |
 | 18 | Cartao micro SD 16GB (ML) | ~R$ 20 |
 | 19 | Capacitor ceramico 100nF (ML) | ~R$ 2 |
-| | **TOTAL ESTIMADO** | **R$ 370-445** |
+| | **TOTAL ESTIMADO** | **R$ 377-452** |
 
 ### Opcao 2: PZEM pelo AliExpress (economica, demora 30-60 dias)
 
 | Categoria | Custo |
 |---|---|
-| Usinainfo (buscar, sem frete) | R$ 183,41 |
+| Usinainfo (buscar, sem frete) | R$ 189,86 |
 | 3x PZEM-004T AliExpress | ~R$ 96-168 |
 | Cartao SD + cap 100nF (ML) | ~R$ 22 |
-| **Total estimado** | **R$ 301-373** |
+| **Total estimado** | **R$ 308-380** |
 
 ## Dicas de Compra
 
@@ -109,11 +109,12 @@
 
 ### ESP32 DevKit V1
 - Preferir versao com **30 pinos** (mais compacta). CH340 ou CP2102 tanto faz
-- [Usinainfo #10357](https://www.usinainfo.com.br/index.php?route=product/product&product_id=10357)
+- Selecionar variante **USB-C** na pagina do produto
+- [Usinainfo](https://www.usinainfo.com.br/nodemcu/esp32-nodemcu-iot-com-wifi-e-bluetooth-30-pinos-com-cp2102-5147.html)
 
 ### Display OLED
 - Confirmar que e **I2C** (4 pinos: VCC, GND, SDA, SCL). Existem versoes SPI com 7 pinos - NAO usar essa
-- [Usinainfo #08483](https://www.usinainfo.com.br/index.php?route=product/product&product_id=8483)
+- [Usinainfo](https://www.usinainfo.com.br/display-arduino/display-oled-096-i2c-128x64-branco-para-arduino-5366.html)
 
 ### Placa Perfurada
 - **5x7cm** (R$ 4,99) para montagem compacta ou **8x12cm** (R$ 8,31) se quiser mais espaco
