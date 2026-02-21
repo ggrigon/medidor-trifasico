@@ -2,29 +2,7 @@
 
 Medidor trifasico DIY para monitoramento de sistema 220/380V em tempo real. Le tensao, corrente, potencia, energia, frequencia e fator de potencia das 3 fases com interface web, display OLED, historico em SD card e integracao MQTT.
 
-**Custo estimado:** ~US$ 70-80 (vs US$ 129+ de solucoes comerciais como Shelly Pro 3EM)
-
-## Lista de Materiais
-
-| # | Componente | Qtd | Funcao | Custo aprox |
-|---|---|---|---|---|
-| 1 | ESP32 DevKit V1 (30 pinos) | 1 | Microcontrolador principal - WiFi + Bluetooth | US$ 10 |
-| 2 | PZEM-004T v3.0 (100A) com TC | 3 | Medidor de energia por fase (Modbus RTU) | US$ 42 (3x US$14) |
-| 3 | Display OLED SSD1306 128x64 I2C | 1 | Display local para leituras | US$ 4 |
-| 4 | Modulo SD Card SPI | 1 | Armazenamento de historico CSV | US$ 3 |
-| 5 | Cartao microSD (qualquer, 4GB+) | 1 | Midia de armazenamento | US$ 3 |
-| 6 | Buzzer passivo 5V | 1 | Alarme sonoro | US$ 1 |
-| 7 | Protoboard ou placa perfurada | 1 | Montagem dos componentes | US$ 3 |
-| 8 | Fios jumper (M-M, M-F) | ~20 | Conexoes entre componentes | US$ 3 |
-| 9 | Caixa plastica/projeto | 1 | Gabinete de protecao | US$ 5-10 |
-| 10 | Fonte 5V 1A (USB ou HLK-PM01) | 1 | Alimentacao do ESP32 | US$ 3-5 |
-
-**Total: ~US$ 77-84**
-
-### Onde comprar
-- AliExpress: melhor preco, entrega 15-40 dias
-- Amazon: entrega rapida, preco um pouco maior
-- Mercado Livre (BR): preco em reais, entrega rapida
+**Custo estimado:** ~R$ 310-390 (vs R$ 700+ de solucoes comerciais como Shelly Pro 3EM)
 
 ## Funcionalidades
 
@@ -34,50 +12,79 @@ Medidor trifasico DIY para monitoramento de sistema 220/380V em tempo real. Le t
 - **Historico SD Card:** log CSV diario (~1.5 MB/dia), cartao de 32GB = ~58 anos
 - **MQTT:** integracao com Home Assistant, Grafana (via Telegraf + InfluxDB)
 - **Alarmes:** sobretensao (>253V) e subtensao (<197V) com buzzer, LED e notificacao web
+- **OTA:** atualizacao de firmware via Wi-Fi
+
+## Lista de Materiais
+
+| # | Componente | Qtd | Funcao |
+|---|---|---|---|
+| 1 | ESP32 DevKit V1 (30 pinos, CP2102) | 1 | Microcontrolador principal - WiFi + Bluetooth |
+| 2 | PZEM-004T v3.0 com TC split-core 100A | 3 | Medidor de energia por fase (Modbus RTU) |
+| 3 | Display OLED SSD1306 128x64 I2C | 1 | Display local para leituras |
+| 4 | Modulo SD Card SPI | 1 | Armazenamento de historico CSV |
+| 5 | Cartao microSD (4GB+ classe 10) | 1 | Midia de armazenamento |
+| 6 | Buzzer passivo 5V (BP18) | 1 | Alarme sonoro |
+| 7 | Placa perfurada dupla face | 1 | Montagem dos componentes |
+| 8 | Fios jumper Dupont (M-M, M-F) | ~40 | Conexoes entre componentes |
+| 9 | Resistor 4.7k 1/4W | 2 | Pull-up I2C (SDA/SCL) |
+| 10 | Resistor 330R 1/4W | 1 | Limitador LED status |
+| 11 | Capacitor eletrolitico 100uF 16V | 1 | Desacoplamento 5V |
+| 12 | Capacitor ceramico 100nF 50V | 1 | Filtro 3.3V |
+| 13 | LED verde 3mm | 1 | Indicador de status |
+| 14 | Borne KRE 2 vias | 1-6 | Conexoes parafusadas |
+| 15 | Barras de pinos macho/femea | 3 | Soquetes e conectores |
+| 16 | Fonte 5V 1A (USB ou HLK-PM01) | 1 | Alimentacao do ESP32 |
+
+> **IMPORTANTE:** Os PZEMs devem ter CT tipo **split-core** (aberto, tipo grampo). NAO comprar com CT fechado (closed loop). Ver detalhes completos em [`LISTA_MATERIAIS.md`](LISTA_MATERIAIS.md).
 
 ## Pinagem
 
 ```
-ESP32 GPIO 16 (RX2) ──┬── PZEM #1 (L1, addr 0x01) TX
-                       ├── PZEM #2 (L2, addr 0x02) TX
-                       └── PZEM #3 (L3, addr 0x03) TX
-
-ESP32 GPIO 17 (TX2) ──┬── PZEM #1 RX
-                       ├── PZEM #2 RX
-                       └── PZEM #3 RX
-
-GPIO 21 (SDA) ── OLED SDA
-GPIO 22 (SCL) ── OLED SCL
-GPIO 23 (MOSI) ── SD MOSI
-GPIO 19 (MISO) ── SD MISO
-GPIO 18 (SCK)  ── SD SCK
-GPIO  5 (CS)   ── SD CS
-GPIO  4        ── Buzzer
-GPIO  2        ── LED status (built-in)
+ESP32 GPIO16 (RX2) ──bus──> 3x PZEM TX   (Modbus RTU, addr 0x01/0x02/0x03)
+ESP32 GPIO17 (TX2) ──bus──> 3x PZEM RX
+ESP32 GPIO21 (SDA) ──────> OLED SDA      (pull-up 4.7k para 3.3V)
+ESP32 GPIO22 (SCL) ──────> OLED SCL      (pull-up 4.7k para 3.3V)
+ESP32 GPIO23 (MOSI) ─────> SD MOSI
+ESP32 GPIO19 (MISO) ─────> SD MISO
+ESP32 GPIO18 (SCK) ──────> SD SCK
+ESP32 GPIO5  (CS) ───────> SD CS
+ESP32 GPIO4  ────────────> Buzzer passivo
+ESP32 GPIO2  ── R 330R ──> LED verde
 ```
+
+Ver esquematico completo em [`hardware/schematic.pdf`](hardware/schematic.pdf) ou [`hardware/schematic.txt`](hardware/schematic.txt).
 
 ## Estrutura do Projeto
 
 ```
 medidor-trifasico/
 ├── platformio.ini              # Configuracao PlatformIO
-├── partitions.csv              # Tabela de particoes customizada
+├── partitions.csv              # Tabela de particoes customizada (1.87MB app + 2.06MB LittleFS)
+├── LISTA_MATERIAIS.md          # Lista detalhada com precos e links de compra (BR)
+├── STATUS.md                   # Andamento do projeto
 ├── src/
-│   ├── main.cpp                # Setup/loop, orquestracao
-│   ├── config.h                # Pinos, constantes, structs
-│   ├── pzem_reader.h/.cpp      # Leitura dos 3 PZEMs
-│   ├── display_manager.h/.cpp  # OLED SSD1306
-│   ├── web_server.h/.cpp       # AsyncWebServer + WebSocket
-│   ├── mqtt_client.h/.cpp      # Publicacao MQTT
-│   ├── sd_logger.h/.cpp        # Log CSV no SD card
-│   ├── alarm_manager.h/.cpp    # Alarmes sub/sobretensao
+│   ├── main.cpp                # Setup/loop, orquestracao cooperativa com millis()
+│   ├── config.h                # Pinos, constantes, structs (PhaseData, MeterData)
+│   ├── pzem_reader.h/.cpp      # Leitura dos 3 PZEMs via Modbus RTU
+│   ├── display_manager.h/.cpp  # OLED SSD1306 (5 paginas rotativas)
+│   ├── web_server.h/.cpp       # AsyncWebServer + WebSocket (tempo real)
+│   ├── mqtt_client.h/.cpp      # Publicacao MQTT (Home Assistant / Grafana)
+│   ├── sd_logger.h/.cpp        # Log CSV no SD card (rotacao diaria)
+│   ├── alarm_manager.h/.cpp    # Alarmes sub/sobretensao com buzzer
 │   ├── wifi_manager.h/.cpp     # WiFi STA + fallback AP
-│   └── ntp_time.h/.cpp         # Sincronizacao NTP
+│   ├── ntp_time.h/.cpp         # Sincronizacao NTP
+│   └── ota_manager.h/.cpp      # Atualizacao OTA via Wi-Fi
 ├── data/                        # LittleFS -> dashboard web
 │   ├── index.html
 │   ├── style.css
 │   ├── app.js
 │   └── chart.min.js.gz
+├── hardware/                    # Projeto PCB KiCad 7 (90x80mm, 2 camadas)
+│   ├── medidor-trifasico.kicad_pro
+│   ├── medidor-trifasico.kicad_sch
+│   ├── medidor-trifasico.kicad_pcb
+│   ├── schematic.pdf
+│   └── schematic.txt
 └── tools/
     └── set_pzem_addresses.cpp   # Utilitario config enderecos PZEM
 ```
@@ -86,7 +93,7 @@ medidor-trifasico/
 
 ### Pre-requisitos
 - [PlatformIO CLI](https://platformio.org/install/cli) ou PlatformIO IDE (VS Code)
-- Cabo USB para o ESP32
+- Cabo USB-C para o ESP32
 
 ### 1. Configurar enderecos dos PZEMs
 
@@ -150,9 +157,18 @@ medidor/status        (online/offline - LWT)
 medidor/alarm         (alertas com retain)
 ```
 
+## PCB Customizada (opcional)
+
+Projeto KiCad 7 pronto em `hardware/` para fabricacao na JLCPCB:
+- PCB carrier board 90x80mm, 2 camadas
+- Todos os modulos encaixam via pin header (ESP32, PZEMs, OLED, SD, buzzer)
+- Resistores e capacitores em SMD 0805
+- Plano de terra em ambas as camadas
+- Furos de montagem M3 nos 4 cantos
+
 ## Seguranca
 
-Os modulos PZEM-004T conectam-se a tensao de rede (220/380V). A instalacao **deve ser feita por alguem confortavel com eletricidade de rede**, dentro de um gabinete apropriado com espacamento adequado. Sempre desligue a energia antes de fazer conexoes.
+Os modulos PZEM-004T conectam-se a tensao de rede (220/380V). A instalacao **deve ser feita por alguem confortavel com eletricidade de rede**, dentro de um gabinete apropriado com espacamento adequado. Sempre desligue a energia antes de fazer conexoes. Os CTs split-core podem ser instalados com a rede energizada, mas tome cuidado com os fios de tensao do PZEM.
 
 ## Licenca
 
